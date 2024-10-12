@@ -34,6 +34,16 @@ void printAllNodesData(struct  node *ptr)
     };
 };
 
+struct node * insertNodeAtTheBeginning(struct node *head, int data)
+{
+    struct node *temp = malloc(sizeof(struct node));
+    temp ->data = data;
+    temp ->link = head;
+    head = temp;
+
+    return temp;
+};
+
 int main()
 {
     struct node *head = malloc(sizeof(struct node));
@@ -43,6 +53,7 @@ int main()
     struct node *ptr = head;
     ptr = addNodeAtTheEnd(ptr,20);
     ptr = addNodeAtTheEnd(ptr,30);
+    head = insertNodeAtTheBeginning(head,40);
     ptr = head;
     if (ptr == NULL) printf("ptr link is Null");
     printAllNodesData(ptr);
