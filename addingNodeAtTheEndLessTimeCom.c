@@ -44,6 +44,25 @@ struct node * insertNodeAtTheBeginning(struct node *head, int data)
     return temp;
 };
 
+void insertNodeAtcertainPos(struct node *head, int data, int poss)
+{
+    struct node *temp = malloc(sizeof(struct node));
+    temp ->data = data;
+    temp ->link = NULL;
+
+    struct node *ptr = head;
+
+    poss --;
+    while(poss != 1)
+    {
+        ptr = ptr ->link;
+        poss --;
+    };
+
+    temp ->link = ptr ->link;
+    ptr ->link = temp;
+};
+
 int main()
 {
     struct node *head = malloc(sizeof(struct node));
@@ -54,6 +73,7 @@ int main()
     ptr = addNodeAtTheEnd(ptr,20);
     ptr = addNodeAtTheEnd(ptr,30);
     head = insertNodeAtTheBeginning(head,40);
+    insertNodeAtcertainPos(head,50,4);
     ptr = head;
     if (ptr == NULL) printf("ptr link is Null");
     printAllNodesData(ptr);
